@@ -1,0 +1,56 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+
+
+struct NodoArbol
+{
+	int dato;
+
+	struct NodoArbol* izquierda;
+	struct NodoArbol* derecha;
+};
+
+//function de crear arbol
+// 
+struct NodoArbol* crearNodo(int dato)
+{
+	struct NodoArbol* nuevoNodo = (struct NodoArbol*)malloc(sizeof(struct NodoArbol));
+	nuevoNodo->dato= dato;
+	nuevoNodo->derecha = NULL;
+	nuevoNodo->izquierda = NULL;
+	return nuevoNodo;
+};
+
+
+//crea e inserta los datos
+struct NodoArbol* insertar(struct NodoArbol*raiz, int dato){
+	
+	if (raiz == NULL) {
+		return crearNodo(dato);
+	}
+
+	if (dato < raiz->dato) {
+		raiz->izquierda = insertar(raiz->izquierda, dato);
+	}
+	else if (dato > raiz->dato) {
+		raiz->derecha = insertar(raiz->derecha, dato);
+	}
+
+
+	return raiz;
+};
+
+//metodo imprimir
+
+
+
+//main
+int main() {
+	struct NodoArbol* raiz = NULL;
+	raiz = insertar(raiz, 155);
+	raiz = insertar(raiz, 15);
+
+}
